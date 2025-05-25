@@ -2,6 +2,8 @@
 
 ![alt text](https://github.com/siddhesh2263/k3-cluster-setup/blob/main/assets/servers.png?raw=true)
 
+![alt text](https://github.com/siddhesh2263/k3-cluster-setup/blob/main/assets/server-details-2.png?raw=true)
+
 <br>
 
 ## Part 1 - Setting up a 3-node K3s cluster
