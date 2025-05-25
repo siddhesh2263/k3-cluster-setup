@@ -170,3 +170,25 @@ To check for any errors/issues, fetch the logs:
 kubectl logs <pod_name>
 ```
 
+<br>
+
+## Part 4 - Initial setup - Single master node with SQLite
+
+### Overview:
+
+We start with a single master node using SQLite as the default datastore in K3s. This approach is ideal for development and testing because SQLite requires minimal configuration and resources - it's embedded direclty into the K3s binary, so there's no need to set up an external database. This lightweight setup allows us to bring up a functional Kubernetes environment quickly and understand how K3s organizes resources and manages workloads.
+
+K3s runs a control plane on the master node, storing the cluster state in `kine.sqlite` located at:
+
+```
+/var/lib/rancher/k3s/server/db/state.db
+```
+
+When K3s was installed, it defaulted to using SQLite wihtout any extra config.
+
+### Issues with this setup:
+
+This setup comes with significant limitations. The biggest drawback is the lack of fault tolerance—if the master node goes down, the entire cluster’s state is at risk since SQLite doesn’t support distributed storage. This setup is best suited for local development or experimentation, not for critical or highly available applications.
+
+<br>
+
