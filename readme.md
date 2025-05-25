@@ -178,6 +178,8 @@ kubectl logs <pod_name>
 
 We start with a single master node using SQLite as the default datastore in K3s. This approach is ideal for development and testing because SQLite requires minimal configuration and resources - it's embedded direclty into the K3s binary, so there's no need to set up an external database. This lightweight setup allows us to bring up a functional Kubernetes environment quickly and understand how K3s organizes resources and manages workloads.
 
+![alt text](https://github.com/siddhesh2263/k3-cluster-setup/blob/main/assets/sqlite-k3.png?raw=true)
+
 K3s runs a control plane on the master node, storing the cluster state in `kine.sqlite` located at:
 
 ```
@@ -197,5 +199,7 @@ This setup comes with significant limitations. The biggest drawback is the lack 
 ### Overview:
 
 To ensure the cluster can withstand failures and stay available, we upgrade from SQLite to etcd as the backing data store. By running etcd on all master nodes, we create a highly available data layer that automatically synchronizes state. This change transforms our cluster from a single-point-of-failure system into a more resilient system.
+
+![alt text](https://github.com/siddhesh2263/k3-cluster-setup/blob/main/assets/etcd-k3.png?raw=true)
 
 ### 
