@@ -1,8 +1,6 @@
 # Setting Up a Lightweight K3s Cluster
 
-![alt text](https://github.com/siddhesh2263/k3-cluster-setup/blob/main/assets/servers.png?raw=true)
-
-![alt text](https://github.com/siddhesh2263/k3-cluster-setup/blob/main/assets/server-details-2.png?raw=true)
+![alt text](https://github.com/siddhesh2263/k3-cluster-setup/blob/main/assets/server-merged.png?raw=true)
 
 <br>
 
