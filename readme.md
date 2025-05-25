@@ -97,3 +97,72 @@ kubectl get nodes
 1 master node and 2 worker nodes should be visible.
 
 ![alt text](https://github.com/siddhesh2263/k3-cluster-setup/blob/main/assets/windows-kubectl-nodes.png?raw=true)
+
+<br>
+
+## Deploying applications: Building, pushing, and managing Docker images with kubectl
+
+### Build the Docker image, and push to container registry:
+
+Go to the app's root directory (wherever the Dockerfile is present,) and run the below command:
+
+```
+docker build -t siddhesh2263/api-gateway:latest .
+```
+
+Once image is built, push it to Docker Hub:
+
+```
+docker push siddhesh2263/api-gateway:latest
+```
+
+### Create a Kubernetes deployment YAML:
+
+An example of a YAML file would be something like this:
+
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-gateway
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: api-gateway
+  template:
+    metadata:
+      labels:
+        app: api-gateway
+    spec:
+      containers:
+      - name: api-gateway
+        image: siddhesh2263/api-gateway:latest
+        ports:
+        - containerPort: 5000  # Change to your app's port
+
+```
+
+Save it as `api-gateway-deployment.yaml`.
+
+### Deploy to the K3s cluster with kubectl:
+
+Apply the deployment from the development machine CLI:
+
+```
+kubectl apply -f api-gateway-deployment.yaml
+```
+
+Once this is done, verify if the pods are running:
+
+```
+kubectl get deployments
+kubectl get pods
+```
+
+To check for any errors/issues, fetch the logs:
+
+```
+kubectl logs <pod_name>
+```
+
