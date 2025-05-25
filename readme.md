@@ -6,7 +6,7 @@
 
 ## Setting up a 3-node K3s cluster
 
-1. Setup the master node:
+### Setup the master node:
 
 The below command downloads the latest K3s binary, sets it up as a systemd service (`k3s.service`,) and then starts the K3s server using `SQLite` as the default data store:
 
@@ -22,7 +22,9 @@ sudo kubectl get nodes
 
 ![alt text](https://github.com/siddhesh2263/k3-cluster-setup/blob/main/assets/k3s-master-setup.png?raw=true)
 
-2. Retrieve the join token and master node IP:
+<br>
+
+### Retrieve the join token and master node IP:
 
 We need a token from the master node, which will be used to join the worker nodes into the cluster:
 
@@ -36,7 +38,9 @@ The master node IP address can be found using:
 hostname -I
 ```
 
-3. Setup the worker nodes:
+<br>
+
+### Setup the worker nodes:
 
 On each worker node, run the below command:
 
@@ -46,7 +50,9 @@ curl -sfL https://get.k3s.io | K3S_URL=https://<MASTER_IP>:6443 K3S_TOKEN=<NODE_
 
 Replace the `MASTER_IP` and the `NODE_TOKEN` with the IP and join token retrieved from the master node.
 
-4. Verify worker nodes joined:
+<br>
+
+### Verify worker nodes joined:
 
 On the master node, run the below command:
 
