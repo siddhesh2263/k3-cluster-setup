@@ -192,3 +192,10 @@ This setup comes with significant limitations. The biggest drawback is the lack 
 
 <br>
 
+## Part 5 - Upgrading to high availability: Converting to etcd-based storage
+
+### Overview:
+
+To ensure the cluster can withstand failures and stay available, we upgrade from SQLite to etcd as the backing data store. By running etcd on all master nodes, we create a highly available data layer that automatically synchronizes state. This change transforms our cluster from a single-point-of-failure system into a more resilient system.
+
+### 
