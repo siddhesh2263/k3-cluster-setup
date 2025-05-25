@@ -188,13 +188,15 @@ K3s runs a control plane on the master node, storing the cluster state in `kine.
 
 When K3s was installed, it defaulted to using SQLite wihtout any extra config.
 
+<br>
+
 ### Issues with this setup:
 
 This setup comes with significant limitations. The biggest drawback is the lack of fault tolerance—if the master node goes down, the entire cluster’s state is at risk since SQLite doesn’t support distributed storage. This setup is best suited for local development or experimentation, not for critical or highly available applications.
 
 <br>
 
-## Part 5 - Upgrading to high availability: Converting to etcd-based storage
+## Part 5 - Upgrading to high availability (HA): Converting to etcd-based storage
 
 ### Overview:
 
@@ -202,4 +204,53 @@ To ensure the cluster can withstand failures and stay available, we upgrade from
 
 ![alt text](https://github.com/siddhesh2263/k3-cluster-setup/blob/main/assets/etcd-k3.png?raw=true)
 
-### 
+<br>
+
+### Install K3s on the first master node (cluster init):
+
+As this stage, although not ideal, I removed the existing single master node K3s setup, and have started a clean HA K3s cluster setup from the start.
+
+On the first master node, run the below command:
+
+```
+curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="server --cluster-init" sh -
+```
+
+This starts etcd and sets up the first master as the initial etcd member.
+
+<br>
+
+### Get the join token from the first master:
+
+On the first master node, copy the token present at the below directory. This will be used by the other master nodes:
+
+```
+sudo cat /var/lib/rancher/k3s/server/node-token
+```
+
+<br>
+
+### Join additonal master nodes to the cluster:
+
+On the 2nd and the 3rd master nodes, execute the below command:
+
+```
+curl -sfL https://get.k3s.io | K3S_TOKEN=<NODE_TOKEN> \
+INSTALL_K3S_EXEC="server --server https://<MASTER_1_IP>:6443" sh -
+```
+
+The `NODE_TOKEN` and the `MASTER_1_IP` are taken from the first master node.
+
+<br>
+
+### Verify all master nodes joined the cluster:
+
+On any master node (or the development machine,) run the below command:
+
+```
+kubectl get nodes
+```
+
+It should show the nodes with the `control-plane`, `etcd` tag attached.
+
+![alt text](https://github.com/siddhesh2263/k3-cluster-setup/blob/main/assets/ha-setup-nodes.png?raw=true)
