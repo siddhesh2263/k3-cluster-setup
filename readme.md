@@ -254,3 +254,19 @@ kubectl get nodes
 It should show the nodes with the `control-plane`, `etcd` tag attached.
 
 ![alt text](https://github.com/siddhesh2263/k3-cluster-setup/blob/main/assets/ha-setup-nodes.png?raw=true)
+
+<br>
+
+## Part 6 - Summary of the K3s cluster setup guide
+
+We set up a 3-node K3s cluster starting with a single master node using SQLite as the data store, then expanded to a highly available setup using etcd.
+
+* We began by installing K3s on the master and joining worker nodes using the join token and IP address of the master.
+
+* We configured kubectl on a development machine to interact with the cluster remotely.
+
+* We walked through how to build Docker images, push them to a registry, and deploy them on the K3s cluster with kubectl.
+
+* After identifying limitations of the single-master SQLite setup (no fault tolerance), we transitioned to HA by cleaning up the single-node cluster and starting a fresh setup.
+
+* Finally, we used the --cluster-init flag on the first master to start etcd, and joined the other two masters as additional etcd members for full HA capability.
