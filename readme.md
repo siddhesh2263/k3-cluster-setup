@@ -4,7 +4,7 @@
 
 <br>
 
-## Setting up a 3-node K3s cluster
+## Part 1 - Setting up a 3-node K3s cluster
 
 ### Setup the master node:
 
@@ -66,7 +66,7 @@ The output should consist of 1 master node (with `control-plane` role,) and 2 wo
 
 <br>
 
-## Setting up kubectl on the development machine
+## Part 2 - Setting up kubectl on the development machine
 
 The kubectl utility uses the `kubeconfig` file on the development machine to authenticate and communicate with the K3s API server.
 
@@ -100,7 +100,7 @@ kubectl get nodes
 
 <br>
 
-## Deploying applications: Building, pushing, and managing Docker images with kubectl
+## Part 3 - Deploying applications: Building, pushing, and managing Docker images with kubectl
 
 ### Build the Docker image, and push to container registry:
 
@@ -115,6 +115,8 @@ Once image is built, push it to Docker Hub:
 ```
 docker push siddhesh2263/api-gateway:latest
 ```
+
+<br>
 
 ### Create a Kubernetes deployment YAML:
 
@@ -144,6 +146,8 @@ spec:
 ```
 
 Save it as `api-gateway-deployment.yaml`.
+
+<br>
 
 ### Deploy to the K3s cluster with kubectl:
 
