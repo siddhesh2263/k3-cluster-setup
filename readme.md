@@ -65,3 +65,35 @@ The output should consist of 1 master node (with `control-plane` role,) and 2 wo
 ![alt text](https://github.com/siddhesh2263/k3-cluster-setup/blob/main/assets/verify-joined.png?raw=true)
 
 <br>
+
+## Setting up kubectl on the development machine
+
+The kubectl utility uses the `kubeconfig` file on the development machine to authenticate and communicate with the K3s API server.
+
+### Retrieve the kubeconfig file:
+
+On the master node, K3s stores the kubeconfig at:
+
+```
+sudo cat /etc/rancher/k3s/k3s.yaml
+```
+
+Copy this file's content.
+
+### Transfer the kubeconfig to development machine:
+
+On the development machine, first create a `.kube` directory if not present. Then, save the above copied `k3s.yaml` file to the `~/.kube/config`.
+
+Replace the default `127.0.0.1` server address in the `~/.kube/config` with the master node's IP address. This change ensures the development machine can reach the K3s API server.
+
+### Verify kubectl connectivity:
+
+On the development machine, run the below command:
+
+```
+kubectl get nodes
+```
+
+1 master node and 2 worker nodes should be visible.
+
+![alt text](https://github.com/siddhesh2263/k3-cluster-setup/blob/main/assets/windows-kubectl-nodes.png?raw=true)
