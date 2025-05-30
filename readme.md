@@ -278,13 +278,13 @@ We set up a 3-node K3s cluster starting with a single master node using SQLite a
 ## Part 7 - Future improvements and next steps
 
 ### Security and access control:
-Right now, the cluster has no strict rules on who can access it. In the future, we’ll need to set up better ways to control who can see and change what—like roles and permissions that ensure only trusted users or services can do sensitive tasks.
+* Right now, the cluster has no strict rules on who can access it. In the future, we’ll need to set up better ways to control who can see and change what—like roles and permissions that ensure only trusted users or services can do sensitive tasks.
 
 ### Backups and recovery:
-If something goes wrong, we don’t want to lose everything. We’ll set up ways to automatically back up the cluster’s data and test restoring from those backups.
+* If something goes wrong, we don’t want to lose everything. We’ll set up ways to automatically back up the cluster’s data and test restoring from those backups.
 
 ### 3. Storing persistent data:
-Some applications need to save data that sticks around, even if they restart. We’ll explore how to provide reliable storage that can handle this data properly.
+* Some applications need to save data that sticks around, even if they restart. We’ll explore how to provide reliable storage that can handle this data properly.
 
 ### 4. Monitoring and logs:
 To know what’s happening in the cluster, we’ll need tools that can show us performance numbers, errors, and warnings in one place. This will help us keep the cluster healthy and fix issues quickly.
