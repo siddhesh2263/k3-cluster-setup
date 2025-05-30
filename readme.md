@@ -1,6 +1,23 @@
 # Setting Up a Lightweight Kubernetes Cluster
 
-## Introduction
+<br>
+
+## Table of Contents
+
+- [Part 1 - Introduction](#part-1---introduction)
+- [Part 2 - Hardware and system setup](#part-2---hardware-and-system-setup)
+- [Part 3 - Setting up a 3-node K3s cluster](#part-3---setting-up-a-3-node-k3s-cluster)
+- [Part 4 - Setting up kubectl on the development machine](#part-4---setting-up-kubectl-on-the-development-machine)
+- [Part 5 - Deploying applications: Building, pushing, and managing Docker images with kubectl](#part-5---deploying-applications-building-pushing-and-managing-docker-images-with-kubectl)
+- [Part 6 - Initial setup - Single master node with SQLite](#part-6---initial-setup---single-master-node-with-sqlite)
+- [Part 7 - Upgrading to high availability (HA): Converting to etcd-based storage](#part-7---upgrading-to-high-availability-ha-converting-to-etcd-based-storage)
+- [Part 8 - Summary of the K3s cluster setup guide](#part-8---summary-of-the-k3s-cluster-setup-guide)
+- [Part 9 - Future improvements and next steps](#part-9---future-improvements-and-next-steps)
+- [Part 10 - Troubleshooting notes](#part-10---troubleshooting-notes)
+
+<br>
+
+## Part 1 - Introduction
 
 This project is about building a lightweight Kubernetes cluster from the ground up using K3s. The goal is to understand how multiple machines can work together as a single system to run and manage containerized applications. We're not using managed cloud services — we're setting up everything ourselves: the servers, the networking, the cluster orchestration.
 
@@ -12,7 +29,7 @@ The motivation behind this setup is to move beyond abstract concepts and actuall
 
 <br>
 
-## Hardware and system setup
+## Part 2 - Hardware and system setup
 
 For this cluster, I used three Linux servers. They’re connected to the same network, providing the base for the K3s environment.
 
@@ -38,7 +55,7 @@ The development system (labeled as "K3s User") connects to the cluster remotely,
 
 <br>
 
-## Part 1 - Setting up a 3-node K3s cluster
+## Part 3 - Setting up a 3-node K3s cluster
 
 This section covers the process of setting up our K3s cluster across three Linux servers. We'll go through installing K3s on the master node, retrieving the join token, and then adding the worker nodes to create a functional, multi-node cluster.
 
@@ -102,7 +119,7 @@ The output should consist of 1 master node (with `control-plane` role,) and 2 wo
 
 <br>
 
-## Part 2 - Setting up kubectl on the development machine
+## Part 4 - Setting up kubectl on the development machine
 
 In this section, we'll set up `kubectl`, the command-line tool that lets us interact with the K3s cluster from our development machine. We'll copy the configuration file from the master node, adjust it so it points to the master's IP, and verify that we can view and manage cluster resources directly from our development environment.
 
@@ -138,7 +155,7 @@ kubectl get nodes
 
 <br>
 
-## Part 3 - Deploying applications: Building, pushing, and managing Docker images with kubectl
+## Part 5 - Deploying applications: Building, pushing, and managing Docker images with kubectl
 
 This section focuses on turning our development work into running applications within the cluster. We'll build Docker images, push them to a container registry, and create deployment YAML files to define how these images run in K3s. Finally, we'll use `kubectl` to apply these configurations and manage our applications directly in the cluster.
 
@@ -212,7 +229,7 @@ kubectl logs <pod_name>
 
 <br>
 
-## Part 4 - Initial setup - Single master node with SQLite
+## Part 6 - Initial setup - Single master node with SQLite
 
 ### Overview:
 
@@ -236,7 +253,7 @@ This setup comes with significant limitations. The biggest drawback is the lack 
 
 <br>
 
-## Part 5 - Upgrading to high availability (HA): Converting to etcd-based storage
+## Part 7 - Upgrading to high availability (HA): Converting to etcd-based storage
 
 ### Overview:
 
@@ -297,7 +314,7 @@ It should show the nodes with the `control-plane`, `etcd` tag attached.
 
 <br>
 
-## Part 6 - Summary of the K3s cluster setup guide
+## Part 8 - Summary of the K3s cluster setup guide
 
 We set up a 3-node K3s cluster starting with a single master node using SQLite as the data store, then expanded to a highly available setup using etcd.
 
@@ -313,7 +330,9 @@ We set up a 3-node K3s cluster starting with a single master node using SQLite a
 
 <br>
 
-## Part 7 - Future improvements and next steps
+## Part 9 - Future improvements and next steps
+
+While this setup gets us up and running with a functional K3s cluster, there's still a lot to refine. In this section, we'll look at what's missing — like security, backups, and monitoring.
 
 ### Security and access control:
 Right now, the cluster has no strict rules on who can access it. In the future, we’ll need to set up better ways to control who can see and change what—like roles and permissions that ensure only trusted users or services can do sensitive tasks.
@@ -342,12 +361,9 @@ Applications often have sensitive data like passwords. We’ll look into better 
 ### Better deployment practices:
 We’ll improve how we roll out updates to applications in the cluster, so they can start faster, scale properly, and stay healthy even under load.
 
-### Automation and documentation:
-Finally, we’ll document everything we’ve learned and automate common tasks, so maintaining the cluster becomes easier and less error-prone in the long run.
-
 <br>
 
-## Part 8 - Troubleshooting notes
+## Part 10 - Troubleshooting notes
 
 ### Issue 1 - kubectl configuration confusion:
 
