@@ -277,10 +277,10 @@ We set up a 3-node K3s cluster starting with a single master node using SQLite a
 
 ## Part 6 - Future improvements and next steps
 
-### Security and access control:
+### 1. Security and access control:
 Right now, the cluster has no strict rules on who can access it. In the future, we’ll need to set up better ways to control who can see and change what—like roles and permissions that ensure only trusted users or services can do sensitive tasks.
 
-### Backups and recovery:
+### 2. Backups and recovery:
 If something goes wrong, we don’t want to lose everything. We’ll set up ways to automatically back up the cluster’s data and test restoring from those backups.
 
 ### Storing persistent data:
