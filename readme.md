@@ -283,26 +283,26 @@ Right now, the cluster has no strict rules on who can access it. In the future, 
 ### 2. Backups and recovery:
 If something goes wrong, we don’t want to lose everything. We’ll set up ways to automatically back up the cluster’s data and test restoring from those backups.
 
-### Storing persistent data:
+### 3. Storing persistent data:
 Some applications need to save data that sticks around, even if they restart. We’ll explore how to provide reliable storage that can handle this data properly.
 
-### Monitoring and logs:
+### 4. Monitoring and logs:
 To know what’s happening in the cluster, we’ll need tools that can show us performance numbers, errors, and warnings in one place. This will help us keep the cluster healthy and fix issues quickly.
 
-### Network reliability and load balancing:
+### 5. Network reliability and load balancing:
 We’ll look into setting up systems that balance incoming traffic so no single server gets overwhelmed. This makes the cluster more resilient and ensures it can handle more users and data.
 
-### Smooth updates and maintenance:
+### 6. Smooth updates and maintenance:
 Keeping everything up to date without breaking things is important. We’ll create a plan for updating the cluster software while keeping services running smoothly.
 
-### Testing high availability:
+### 7. Testing high availability:
 We’ve set up high availability, but we need to regularly test what happens if a server goes down—so we know for sure the cluster can recover without issues.
 
-### Managing secrets and sensitive data:
+### 8. Managing secrets and sensitive data:
 Applications often have sensitive data like passwords. We’ll look into better ways to store these securely and avoid accidental leaks.
 
-### Better deployment practices:
+### 9. Better deployment practices:
 We’ll improve how we roll out updates to applications in the cluster, so they can start faster, scale properly, and stay healthy even under load.
 
-### Automation and documentation:
+### 10. Automation and documentation:
 Finally, we’ll document everything we’ve learned and automate common tasks, so maintaining the cluster becomes easier and less error-prone in the long run.
