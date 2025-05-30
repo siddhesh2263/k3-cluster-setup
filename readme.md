@@ -3,7 +3,6 @@
 ![alt text](https://github.com/siddhesh2263/k3-cluster-setup/blob/main/assets/server-merged.png?raw=true)
 
 
-
 <br>
 
 ## Part 1 - Setting up a 3-node K3s cluster
@@ -278,31 +277,31 @@ We set up a 3-node K3s cluster starting with a single master node using SQLite a
 ## Part 7 - Future improvements and next steps
 
 ### Security and access control:
-* Right now, the cluster has no strict rules on who can access it. In the future, we’ll need to set up better ways to control who can see and change what—like roles and permissions that ensure only trusted users or services can do sensitive tasks.
+Right now, the cluster has no strict rules on who can access it. In the future, we’ll need to set up better ways to control who can see and change what—like roles and permissions that ensure only trusted users or services can do sensitive tasks.
 
 ### Backups and recovery:
-* If something goes wrong, we don’t want to lose everything. We’ll set up ways to automatically back up the cluster’s data and test restoring from those backups.
+If something goes wrong, we don’t want to lose everything. We’ll set up ways to automatically back up the cluster’s data and test restoring from those backups.
 
-### 3. Storing persistent data:
-* Some applications need to save data that sticks around, even if they restart. We’ll explore how to provide reliable storage that can handle this data properly.
+### Storing persistent data:
+Some applications need to save data that sticks around, even if they restart. We’ll explore how to provide reliable storage that can handle this data properly.
 
-### 4. Monitoring and logs:
+### Monitoring and logs:
 To know what’s happening in the cluster, we’ll need tools that can show us performance numbers, errors, and warnings in one place. This will help us keep the cluster healthy and fix issues quickly.
 
-### 5. Network reliability and load balancing:
+### Network reliability and load balancing:
 We’ll look into setting up systems that balance incoming traffic so no single server gets overwhelmed. This makes the cluster more resilient and ensures it can handle more users and data.
 
-### 6. Smooth updates and maintenance:
+### Smooth updates and maintenance:
 Keeping everything up to date without breaking things is important. We’ll create a plan for updating the cluster software while keeping services running smoothly.
 
-### 7. Testing high availability:
+### Testing high availability:
 We’ve set up high availability, but we need to regularly test what happens if a server goes down—so we know for sure the cluster can recover without issues.
 
-### 8. Managing secrets and sensitive data:
+### Managing secrets and sensitive data:
 Applications often have sensitive data like passwords. We’ll look into better ways to store these securely and avoid accidental leaks.
 
-### 9. Better deployment practices:
+### Better deployment practices:
 We’ll improve how we roll out updates to applications in the cluster, so they can start faster, scale properly, and stay healthy even under load.
 
-### 10. Automation and documentation:
+### Automation and documentation:
 Finally, we’ll document everything we’ve learned and automate common tasks, so maintaining the cluster becomes easier and less error-prone in the long run.
