@@ -2,6 +2,8 @@
 
 ![alt text](https://github.com/siddhesh2263/k3-cluster-setup/blob/main/assets/server-merged.png?raw=true)
 
+
+
 <br>
 
 ## Part 1 - Setting up a 3-node K3s cluster
@@ -270,3 +272,11 @@ We set up a 3-node K3s cluster starting with a single master node using SQLite a
 * After identifying limitations of the single-master SQLite setup (no fault tolerance), we transitioned to HA by cleaning up the single-node cluster and starting a fresh setup.
 
 * Finally, we used the --cluster-init flag on the first master to start etcd, and joined the other two masters as additional etcd members for full HA capability.
+
+<br>
+
+## Part 6 - Future improvements and next steps
+
+### Security and Access Control
+
+Right now, the cluster has no strict rules on who can access it. In the future, we’ll need to set up better ways to control who can see and change what—like roles and permissions that ensure only trusted users or services can do sensitive tasks.
