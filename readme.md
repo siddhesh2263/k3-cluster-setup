@@ -34,6 +34,8 @@ The development system (labeled as "K3s User") connects to the cluster remotely,
 
 ## Part 1 - Setting up a 3-node K3s cluster
 
+This section covers the process of setting up our K3s cluster across three Linux servers. We'll go through installing K3s on the master node, retrieving the join token, and then adding the worker nodes to create a functional, multi-node cluster.
+
 ### Setup the master node:
 
 The below command downloads the latest K3s binary, sets it up as a systemd service (`k3s.service`,) and then starts the K3s server using `SQLite` as the default data store:
@@ -96,7 +98,9 @@ The output should consist of 1 master node (with `control-plane` role,) and 2 wo
 
 ## Part 2 - Setting up kubectl on the development machine
 
-The kubectl utility uses the `kubeconfig` file on the development machine to authenticate and communicate with the K3s API server.
+In this section, we'll set up `kubectl`, the command-line tool that lets us interact with the K3s cluster from our development machine. We'll copy the configuration file from the master node, adjust it so it points to the master's IP, and verify that we can view and manage cluster resources directly from our development environment.
+
+The `kubectl` utility uses the `kubeconfig` file on the development machine to authenticate and communicate with the K3s API server.
 
 ### Retrieve the kubeconfig file:
 
@@ -129,6 +133,8 @@ kubectl get nodes
 <br>
 
 ## Part 3 - Deploying applications: Building, pushing, and managing Docker images with kubectl
+
+This section focuses on turning our development work into running applications within the cluster. We'll build Docker images, push them to a container registry, and create deployment YAML files to define how these images run in K3s. Finally, we'll use `kubectl` to apply these configurations and manage our applications directly in the cluster.
 
 ### Build the Docker image, and push to container registry:
 
@@ -291,13 +297,13 @@ We set up a 3-node K3s cluster starting with a single master node using SQLite a
 
 * We began by installing K3s on the master and joining worker nodes using the join token and IP address of the master.
 
-* We configured kubectl on a development machine to interact with the cluster remotely.
+* We configured `kubectl` on a development machine to interact with the cluster remotely.
 
-* We walked through how to build Docker images, push them to a registry, and deploy them on the K3s cluster with kubectl.
+* We walked through how to build Docker images, push them to a registry, and deploy them on the K3s cluster with `kubectl`.
 
 * After identifying limitations of the single-master SQLite setup (no fault tolerance), we transitioned to HA by cleaning up the single-node cluster and starting a fresh setup.
 
-* Finally, we used the --cluster-init flag on the first master to start etcd, and joined the other two masters as additional etcd members for full HA capability.
+* Finally, we used the `--cluster-init` flag on the first master to start etcd, and joined the other two masters as additional etcd members for full HA capability.
 
 <br>
 
@@ -318,7 +324,7 @@ To know what’s happening in the cluster, we’ll need tools that can show us p
 ### Network reliability and load balancing:
 We’ll look into setting up systems that balance incoming traffic so no single server gets overwhelmed. This makes the cluster more resilient and ensures it can handle more users and data.
 
-### Smooth updates and maintenance:
+### Updates and maintenance:
 Keeping everything up to date without breaking things is important. We’ll create a plan for updating the cluster software while keeping services running smoothly.
 
 ### Testing high availability:
@@ -332,3 +338,15 @@ We’ll improve how we roll out updates to applications in the cluster, so they 
 
 ### Automation and documentation:
 Finally, we’ll document everything we’ve learned and automate common tasks, so maintaining the cluster becomes easier and less error-prone in the long run.
+
+<br>
+
+## Part 8 - Troubleshooting notes
+
+### Issue 1 - kubectl configuration confusion:
+
+I initially faced issues where `kubectl` was using a different `kubeconfig` file location than where I was making my updates. This caused confusion because changes to the config file weren’t taking effect in the `kubectl` commands. I realized I needed to ensure that the environment variable `KUBECONFIG` or the default `~/.kube/config` matched the file I was actually editing.
+
+### Issue 2 - WiFi adapter compatibility:
+
+Another challenge was getting the WiFi adapters to work with Linux. While the adapters worked fine in Windows, they didn’t have Linux drivers out of the box. I had to source different WiFi adapters that were supported by Linux to ensure the servers could connect to the network.
