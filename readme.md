@@ -1,10 +1,12 @@
-# Setting Up a Lightweight K3s Cluster
+# Setting Up a Lightweight Kubernetes Cluster
 
 ## Introduction
 
 This project is about building a lightweight Kubernetes cluster from the ground up using K3s. The goal is to understand how multiple machines can work together as a single system to run and manage containerized applications. We're not using managed cloud services — we're setting up everything ourselves: the servers, the networking, the cluster orchestration.
 
 The motivation behind this setup is to move beyond abstract concepts and actually see what it takes to get a distributed system running. What software is required? How do the machines communicate? What happens when one of them fails? These are questions that often get abstracted away in modern development workflows, but are critical to understand as a software developer. By building and managing our own cluster, we gain a clearer picture of how software is deployed, scaled, and kept running in the real world.
+
+<br>
 
 ![alt text](https://github.com/siddhesh2263/k3-cluster-setup/blob/main/assets/server-merged.png?raw=true)
 
@@ -13,6 +15,10 @@ The motivation behind this setup is to move beyond abstract concepts and actuall
 ## Hardware and system setup
 
 For this cluster, I used three Linux servers. They’re connected to the same network, providing the base for the K3s environment.
+
+### What is K3s?
+
+K3s is a lightweight, streamlined version of Kubernetes, designed for running clusters in resource-constrained environments. It simplifies setup by stripping away extra features and bundling core components into a single binary. K3s makes it easier to experiment with Kubernetes and deploy applications on smaller, more manageable clusters.
 
 ### Server Description:
 
