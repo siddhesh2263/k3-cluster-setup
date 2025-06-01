@@ -233,7 +233,7 @@ kubectl logs <pod_name>
 
 ### Overview:
 
-We start with a single master node using SQLite as the default datastore in K3s. This approach is ideal for development and testing because SQLite requires minimal configuration and resources - it's embedded direclty into the K3s binary, so there's no need to set up an external database. This lightweight setup allows us to bring up a functional Kubernetes environment quickly and understand how K3s organizes resources and manages workloads.
+We started with a single master node using SQLite as the default datastore in K3s. This approach is ideal for development and testing because SQLite requires minimal configuration and resources - it's embedded direclty into the K3s binary, so there's no need to set up an external database. This lightweight setup allows us to bring up a functional Kubernetes environment quickly and understand how K3s organizes resources and manages workloads.
 
 ![alt text](https://github.com/siddhesh2263/k3-cluster-setup/blob/main/assets/sqlite-k3.png?raw=true)
 
