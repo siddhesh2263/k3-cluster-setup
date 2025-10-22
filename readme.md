@@ -19,7 +19,7 @@
 
 ## Part 1 - Introduction
 
-This project is about building a lightweight Kubernetes cluster from the ground up using K3s. The goal is to understand how multiple machines can work together as a single system to run and manage containerized applications. We're not using managed cloud services — we're setting up everything ourselves: the servers, the networking, the cluster orchestration.
+This project is about building a lightweight Kubernetes cluster from the ground up using K3s. The goal is to understand how multiple machines can work together as a single system to run and manage containerized applications. We're not using managed cloud services - we're setting up everything ourselves: the servers, the networking, the cluster orchestration.
 
 The motivation behind this setup is to move beyond abstract concepts and actually see what it takes to get a distributed system running. What software is required? How do the machines communicate? What happens when one of them fails? These are questions that often get abstracted away in modern development workflows, but are critical to understand as a software developer. By building and managing our own cluster, we gain a clearer picture of how software is deployed, scaled, and kept running in the real world.
 
@@ -249,7 +249,7 @@ When K3s was installed, it defaulted to using SQLite wihtout any extra config.
 
 ### Issues with this setup:
 
-This setup comes with significant limitations. The biggest drawback is the lack of fault tolerance—if the master node goes down, the entire cluster’s state is at risk since SQLite doesn’t support distributed storage. This setup is best suited for local development or experimentation, not for critical or highly available applications.
+This setup comes with significant limitations. The biggest drawback is the lack of fault tolerance - if the master node goes down, the entire cluster’s state is at risk since SQLite doesn’t support distributed storage. This setup is best suited for local development or experimentation, not for critical or highly available applications.
 
 <br>
 
@@ -332,10 +332,10 @@ We set up a 3-node K3s cluster starting with a single master node using SQLite a
 
 ## Part 9 - Future improvements and next steps
 
-While this setup gets us up and running with a functional K3s cluster, there's still a lot to refine. In this section, we'll look at what's missing — like security, backups, and monitoring.
+While this setup gets us up and running with a functional K3s cluster, there's still a lot to refine. In this section, we'll look at what's missing - like security, backups, and monitoring.
 
 ### Security and access control:
-Right now, the cluster has no strict rules on who can access it. In the future, we’ll need to set up better ways to control who can see and change what—like roles and permissions that ensure only trusted users or services can do sensitive tasks.
+Right now, the cluster has no strict rules on who can access it. In the future, we’ll need to set up better ways to control who can see and change what - like roles and permissions that ensure only trusted users or services can do sensitive tasks.
 
 ### Backups and recovery:
 If something goes wrong, we don’t want to lose everything. We’ll set up ways to automatically back up the cluster’s data and test restoring from those backups.
@@ -353,7 +353,7 @@ We’ll look into setting up systems that balance incoming traffic so no single 
 Keeping everything up to date without breaking things is important. We’ll create a plan for updating the cluster software while keeping services running smoothly.
 
 ### Testing high availability:
-We’ve set up high availability, but we need to regularly test what happens if a server goes down—so we know for sure the cluster can recover without issues.
+We’ve set up high availability, but we need to regularly test what happens if a server goes down - so we know for sure the cluster can recover without issues.
 
 ### Managing secrets and sensitive data:
 Applications often have sensitive data like passwords. We’ll look into better ways to store these securely and avoid accidental leaks.
